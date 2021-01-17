@@ -15,10 +15,12 @@ namespace TrackerLibrary
         /// The list of teams participaiting in this match
         /// </summary>
         public List<MatchupEntryModel> Entries { get; set; }
+
         /// <summary>
         /// The winner of the match
         /// </summary>
         public TeamModel Winner { get; set; }
+
         /// <summary>
         /// The number of the current round
         /// </summary>
