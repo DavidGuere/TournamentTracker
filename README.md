@@ -1,3 +1,7 @@
+# Tournament tracker application
+
+An application to track multiple tournaments connected to an SQL database. The application can work with multiple types os UI. The current UI is a WPF UI.
+
 ## Requirement
 
 - Track the games and the outcomes.

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TrackerLibrary;
+using TrackerLibrary.DataAccess;
+using TrackerLibrary.Models;
 
 namespace TournamentTrackerUI
 {
@@ -30,6 +32,15 @@ namespace TournamentTrackerUI
             if (FormIsValid())
             {
                 PrizeModel model = new PrizeModel(textBox_placeNumber.Text, textBox_placeName.Text, textBox_prizeAmount.Text, textBox_prizePercentage.Text);
+
+                foreach (IDataConnection item in GlobalConnection.ListOfConnections)
+                {
+                    item.SavePrizeModel(model);
+                }
+
+                MessageBox.Show("Prize created");
+
+                this.Close();
             }
         }
 
@@ -70,7 +81,7 @@ namespace TournamentTrackerUI
                 output = false;
             }
 
-            if (prizeAmount <= 0 || prizePercentage <= 0)
+            if (prizeAmount <= 0 && prizePercentage <= 0)
             {
                 MessageBox.Show("Enter a valid prize");
                 output = false;

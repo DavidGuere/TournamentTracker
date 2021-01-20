@@ -21,3 +21,6 @@ C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\C
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\CreateTeam.baml
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\CreateTournament.baml
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\TournamentDashboard.baml
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\TrackerLibrary.dll
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\TrackerLibrary.pdb
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\TournamentTrackerUI.csproj.CopyComplete

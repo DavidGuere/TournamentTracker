@@ -23,6 +23,8 @@ namespace TournamentTrackerUI
         public MainWindow()
         {
             InitializeComponent();
+
+            TrackerLibrary.GlobalConnection.InitializeConnections(true, true);
         }
     }
 }
