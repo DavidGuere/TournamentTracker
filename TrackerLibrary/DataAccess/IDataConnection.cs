@@ -10,5 +10,6 @@ namespace TrackerLibrary.DataAccess
     public interface IDataConnection
     {
         PrizeModel SavePrizeModel(PrizeModel new_model);
+        PersonModel SavePersonModel(PersonModel new_model);
     }
 }

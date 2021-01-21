@@ -11,9 +11,26 @@ namespace TrackerLibrary.Models
     /// </summary>
     public class PersonModel
     {
+        /// <summary>
+        /// Unique prize identifier
+        /// </summary>
+        public int Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string Email { get; set; }
         public string Telephone { get; set; }
+
+        public PersonModel()
+        {
+
+        }
+
+        public PersonModel(string TfirsrtName, string TlastName, string Temail, string Ttelephone)
+        {
+            firstName = TfirsrtName;
+            lastName = TlastName;
+            Email = Temail;
+            Telephone = Ttelephone;
+        }
     }
 }

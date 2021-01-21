@@ -26,7 +26,6 @@ namespace TournamentTrackerUI
         {
             InitializeComponent();
 
-            TrackerLibrary.GlobalConnection.InitializeConnection(DatabaseType.SQL);
         }
 
         private void button_createPrize_Click(object sender, RoutedEventArgs e)

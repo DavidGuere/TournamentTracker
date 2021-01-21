@@ -1,6 +1,6 @@
 # Tournament tracker application
 
-An application to track multiple tournaments connected to an SQL database. The application can work with multiple types os UI. The current UI is a WPF UI.
+An application to track multiple tournaments connected to an SQL database using Dapper ORM. Interacting with the database using stored procedures. The application can work with multiple types os UI. The current UI is a WPF UI.
 
 ## Requirement
 

@@ -7,16 +7,41 @@ using TrackerLibrary.Models;
 using System.Data;
 using Dapper;
 
- //   @PlaceNumber int,
- //   @PlaceName nvarchar(50),
- //   @PrizeAmount money,
- //   @PrizePercentage float,
- //   @id int = 0 output
+//   @PlaceNumber int,
+//   @PlaceName nvarchar(50),
+//   @PrizeAmount money,
+//   @PrizePercentage float,
+//   @id int = 0 output
+
+//  @FirstName nvarchar(50),
+//	@LastName nvarchar(50),
+//	@Email nvarchar(50),
+//	@Telephone varchar(10),
+//	@id int = 0 output
 
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnection : IDataConnection
     {
+        public PersonModel SavePersonModel(PersonModel new_model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConnection.ConnectionName("MyTournaments")))
+            {
+                var p = new DynamicParameters();
+                p.Add("FirstName", new_model.firstName);
+                p.Add("@LastName", new_model.lastName);
+                p.Add("@Email", new_model.Email);
+                p.Add("@Telephone", new_model.Telephone);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("spPeople_insert_data", p, commandType: CommandType.StoredProcedure);
+
+                new_model.Id = p.Get<int>("@id");
+
+                return new_model;
+            }
+        }
+
         /// <summary>
         /// Saves the pzize to the SQL database
         /// </summary>

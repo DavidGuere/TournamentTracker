@@ -14,15 +14,15 @@
         <ComboBox Name="comboBox_team_member_selector" HorizontalAlignment="Left" Margin="42,181,0,0" VerticalAlignment="Top" Width="196"/>
         <GroupBox Header="Add new member" HorizontalAlignment="Left" Height="215" Margin="41,257,0,0" VerticalAlignment="Top" Width="197"/>
         <Label Content="First name" Margin="46,283,0,0" HorizontalAlignment="Left" Width="69" Height="33" VerticalAlignment="Top"/>
-        <TextBox Name="firstName" HorizontalAlignment="Left" Height="23" Margin="115,287,0,0" TextWrapping="Wrap" Text="firstName" VerticalAlignment="Top" Width="107"/>
+        <TextBox Name="firstName" HorizontalAlignment="Left" Height="23" Margin="115,287,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
         <Label Content="Last name" Margin="46,311,0,0" HorizontalAlignment="Left" Width="69" Height="33" VerticalAlignment="Top"/>
-        <TextBox Name="lastName" HorizontalAlignment="Left" Height="23" Margin="115,315,0,0" TextWrapping="Wrap" Text="lastName" VerticalAlignment="Top" Width="107"/>
+        <TextBox Name="lastName" HorizontalAlignment="Left" Height="23" Margin="115,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
         <Label Content="Email" Margin="46,339,0,112" HorizontalAlignment="Left" Width="69"/>
-        <TextBox Name="email" HorizontalAlignment="Left" Height="23" Margin="115,343,0,0" TextWrapping="Wrap" Text="email" VerticalAlignment="Top" Width="107"/>
+        <TextBox Name="email" HorizontalAlignment="Left" Height="23" Margin="115,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
         <Label Content="Telephone" Margin="46,366,0,0" HorizontalAlignment="Left" Width="69" Height="33" VerticalAlignment="Top"/>
-        <TextBox Name="telephone" HorizontalAlignment="Left" Height="23" Margin="115,370,0,0" TextWrapping="Wrap" Text="telephone" VerticalAlignment="Top" Width="107"/>
+        <TextBox Name="telephone" HorizontalAlignment="Left" Height="23" Margin="115,370,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
         <Button Name="button_addMember" Content="Add member" HorizontalAlignment="Left" Margin="80,212,0,0" VerticalAlignment="Top" Width="104" Height="40"/>
-        <Button Name="button_createMember" Content="Create member" HorizontalAlignment="Left" Margin="80,414,0,0" VerticalAlignment="Top" Width="104" Height="40"/>
+        <Button Name="button_createMember" Content="Create member" HorizontalAlignment="Left" Margin="80,414,0,0" VerticalAlignment="Top" Width="104" Height="40" Click="button_createMember_Click"/>
         <ListBox HorizontalAlignment="Left" Height="276" Margin="276,123,0,0" VerticalAlignment="Top" Width="198"/>
         <Button Name="button_deleteSelected" Content="Delete selected" HorizontalAlignment="Left" Margin="323,414,0,0" VerticalAlignment="Top" Width="103" Height="40"/>
 
