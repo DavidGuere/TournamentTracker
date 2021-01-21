@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrackerLibrary;
 
 namespace TournamentTrackerUI
 {
@@ -24,7 +25,7 @@ namespace TournamentTrackerUI
         {
             InitializeComponent();
 
-            TrackerLibrary.GlobalConnection.InitializeConnections(true, true);
+            TrackerLibrary.GlobalConnection.InitializeConnection(DatabaseType.SQL);
         }
     }
 }

@@ -24,3 +24,5 @@ C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\T
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\TrackerLibrary.dll
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\TrackerLibrary.pdb
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\obj\Debug\TournamentTrackerUI.csproj.CopyComplete
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\Dapper.dll
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TournamentTrackerUI\bin\Debug\Dapper.xml

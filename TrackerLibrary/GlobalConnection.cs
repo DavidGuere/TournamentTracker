@@ -4,27 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrackerLibrary.DataAccess;
+using System.Configuration;
+
 
 namespace TrackerLibrary
 {
     public static class GlobalConnection
     {
-        public static List<IDataConnection> ListOfConnections { get; private set; } = new List<IDataConnection>();
+        public static IDataConnection Connection { get; private set; }
 
-        public static void InitializeConnections(bool sqlData, bool txtData)
+        public static void InitializeConnection(DatabaseType type)
         {
-            if (sqlData)
+            switch (type)
             {
-                SqlConnection sql = new SqlConnection();
-                ListOfConnections.Add(sql);
+                case DatabaseType.SQL:
+                    SqlConnection sql = new SqlConnection();
+                    Connection = sql;
+                    break;
+                case DatabaseType.TXT:
+                    TxtConnection txt = new TxtConnection();
+                    Connection = txt;
+                    break;
+                default:
+                    break;
             }
+        }
 
-            if (txtData)
-            {
-                TxtConnection txt = new TxtConnection();
-                ListOfConnections.Add(txt);
-               
-            }
+        /// <summary>
+        /// Returns the connection string from the App.config
+        /// </summary>
+        /// <param name="name_of_connection">The name of the connection</param>
+        /// <returns>The connection string of name_of_connection connection</returns>
+        public static string ConnectionName(string name_of_connection)
+        {
+            return ConfigurationManager.ConnectionStrings[name_of_connection].ConnectionString;
         }
     }
 }

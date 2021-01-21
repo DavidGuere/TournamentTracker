@@ -4,3 +4,6 @@ C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\obj\Debug\Tracke
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CoreCompileInputs.cache
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\obj\Debug\TrackerLibrary.dll
 C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\bin\Debug\Dapper.dll
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\bin\Debug\Dapper.xml
+C:\Anaconda3\CSharp_learn\TrackerLibrarySolution\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CopyComplete

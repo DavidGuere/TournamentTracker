@@ -25,6 +25,8 @@ namespace TournamentTrackerUI
         public CreatePrize()
         {
             InitializeComponent();
+
+            TrackerLibrary.GlobalConnection.InitializeConnection(DatabaseType.SQL);
         }
 
         private void button_createPrize_Click(object sender, RoutedEventArgs e)
@@ -33,10 +35,8 @@ namespace TournamentTrackerUI
             {
                 PrizeModel model = new PrizeModel(textBox_placeNumber.Text, textBox_placeName.Text, textBox_prizeAmount.Text, textBox_prizePercentage.Text);
 
-                foreach (IDataConnection item in GlobalConnection.ListOfConnections)
-                {
-                    item.SavePrizeModel(model);
-                }
+                GlobalConnection.Connection.SavePrizeModel(model);
+                
 
                 MessageBox.Show("Prize created");
 
