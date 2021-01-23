@@ -21,12 +21,56 @@ namespace TournamentTrackerUI
     /// </summary>
     public partial class CreateTeam : Window
     {
+        private List<PersonModel> availableMembers = new List<PersonModel>();
+        private List<PersonModel> selectedMember = new List<PersonModel>();
+
+        private TeamModel latestTeam;
+        public TeamModel setgetLatestTeam 
+        { get { return latestTeam; }
+          private set { latestTeam = value; }
+        }
+
         public CreateTeam()
         {
             InitializeComponent();
 
+            loadDataToList();
 
-            TrackerLibrary.GlobalConnection.InitializeConnection(DatabaseType.TXT);
+            connectLists();
+        }
+
+        private void loadDataToList()
+        {
+            availableMembers = GlobalConnection.Connection.GetAllPeople();
+        }
+
+        private void connectLists()
+        {
+            comboBox_team_member_selector.ItemsSource = availableMembers;
+            comboBox_team_member_selector.DisplayMemberPath = "fullName";
+
+            listBox_selected_team_member.DataContext = selectedMember;
+            listBox_selected_team_member.DisplayMemberPath = "fullName";
+        }
+
+        private void button_addMember_Click(object sender, RoutedEventArgs e)
+        {
+            PersonModel p = (PersonModel)comboBox_team_member_selector.SelectedItem;
+
+            listBox_selected_team_member.Items.Add(p);
+            selectedMember.Add(p);
+            availableMembers.Remove(p);
+            comboBox_team_member_selector.Items.Refresh();
+        }
+
+        private void button_removeSelected_Click(object sender, RoutedEventArgs e)
+        {
+            PersonModel p = (PersonModel)listBox_selected_team_member.SelectedItem;
+
+            listBox_selected_team_member.Items.Remove(p);
+            selectedMember.Remove(p);
+            availableMembers.Add(p);
+            comboBox_team_member_selector.Items.Refresh();
         }
 
         private void button_createMember_Click(object sender, RoutedEventArgs e)
@@ -43,6 +87,27 @@ namespace TournamentTrackerUI
                 lastName.Text = "";
                 email.Text = "";
                 telephone.Text = "";
+
+                availableMembers.Add(model);
+                comboBox_team_member_selector.Items.Refresh();
+            }
+        }
+        private void button_createTeam_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox_team_name.Text.Length != 0 && listBox_selected_team_member.Items.Count != 0)
+            {
+                TeamModel model = new TeamModel();
+
+                model.TeamName = textBox_team_name.Text;
+                model.TeamMembers = selectedMember;
+
+                model = GlobalConnection.Connection.SaveTeamModel(model);
+
+                setgetLatestTeam = model;
+
+                MessageBox.Show("Team created!");
+
+                this.Close();
             }
         }
 

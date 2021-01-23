@@ -118,5 +118,65 @@ namespace TrackerLibrary.DataAccess.TxtHelper
 
             File.WriteAllLines(fileName.CreateFilePath(), linesToSave);
         }
+
+        ////////////////////////////////////////////        Team Model      ////////////////////////////////////////////////
+        
+        public static List<TeamModel> ConvertStringToTeamModels(this List<string> stringLines, string fileName)
+        {
+            List<TeamModel> output = new List<TeamModel>();
+            List<PersonModel> people = fileName.CreateFilePath().LoadFile().ConvertStringToPersonModel();
+
+            foreach (string line in stringLines)
+            {
+                string[] columns = line.Split(',');
+
+                TeamModel model = new TeamModel();
+
+                model.Id = int.Parse(columns[0]);
+                model.TeamName = columns[1];
+
+                string[] personIds = columns[2].Split('|');
+
+                foreach (string id in personIds)
+                {
+                    model.TeamMembers.Add(people.Where(x => x.Id == int.Parse(id)).First());
+
+                }
+                output.Add(model);
+            }
+
+            return output;
+        }
+
+        public static void SaveTeamModelToTxt(this List<TeamModel> updatedModel, string fileName)
+        {
+            List<string> linesToSave = new List<string>();
+
+            foreach (TeamModel team in updatedModel)
+            {
+                linesToSave.Add($"{team.Id},{team.TeamName},{ConvertPeopleListToString(team.TeamMembers)}");
+            }
+
+            File.WriteAllLines(fileName.CreateFilePath(), linesToSave);
+        }
+
+        private static string ConvertPeopleListToString(List<PersonModel> people)
+        {
+            string output = "";
+
+            if (people.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (PersonModel person in people)
+            {
+                output += $"{person.Id}|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
     }
 }

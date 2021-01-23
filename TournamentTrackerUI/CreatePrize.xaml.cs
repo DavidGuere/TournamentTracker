@@ -22,6 +22,12 @@ namespace TournamentTrackerUI
     /// </summary>
     public partial class CreatePrize : Window
     {
+        private PrizeModel latestModel;
+        public PrizeModel setGetlatestModel
+        {
+            get { return latestModel; }
+            private set { latestModel = value; }
+        }
         public CreatePrize()
         {
             InitializeComponent();
@@ -34,8 +40,9 @@ namespace TournamentTrackerUI
             {
                 PrizeModel model = new PrizeModel(textBox_placeNumber.Text, textBox_placeName.Text, textBox_prizeAmount.Text, textBox_prizePercentage.Text);
 
-                GlobalConnection.Connection.SavePrizeModel(model);
-                
+                model = GlobalConnection.Connection.SavePrizeModel(model);
+
+                setGetlatestModel = model;
 
                 MessageBox.Show("Prize created");
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TournamentTrackerUI"
         mc:Ignorable="d"
-        Title="Create Team" Height="514" Width="513.6">
+        Title="Create Team" Height="597.2" Width="513.6">
     <Grid Margin="0,0,-0.4,0">
         <Label Content="Create Team" RenderTransformOrigin="0.477,0.485" FontSize="25" Margin="28,28,0,0" HorizontalAlignment="Left" Width="242" Height="58" VerticalAlignment="Top"/>
         <Label Content="Team name" Margin="42,86,0,0" HorizontalAlignment="Left" Width="166" Height="37" VerticalAlignment="Top"/>
@@ -21,10 +21,11 @@
         <TextBox Name="email" HorizontalAlignment="Left" Height="23" Margin="115,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
         <Label Content="Telephone" Margin="46,366,0,0" HorizontalAlignment="Left" Width="69" Height="33" VerticalAlignment="Top"/>
         <TextBox Name="telephone" HorizontalAlignment="Left" Height="23" Margin="115,370,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="107"/>
-        <Button Name="button_addMember" Content="Add member" HorizontalAlignment="Left" Margin="80,212,0,0" VerticalAlignment="Top" Width="104" Height="40"/>
+        <Button Name="button_addMember" Content="Add member" HorizontalAlignment="Left" Margin="80,212,0,0" VerticalAlignment="Top" Width="104" Height="40" Click="button_addMember_Click"/>
         <Button Name="button_createMember" Content="Create member" HorizontalAlignment="Left" Margin="80,414,0,0" VerticalAlignment="Top" Width="104" Height="40" Click="button_createMember_Click"/>
-        <ListBox HorizontalAlignment="Left" Height="276" Margin="276,123,0,0" VerticalAlignment="Top" Width="198"/>
-        <Button Name="button_deleteSelected" Content="Delete selected" HorizontalAlignment="Left" Margin="323,414,0,0" VerticalAlignment="Top" Width="103" Height="40"/>
+        <ListBox Name="listBox_selected_team_member" HorizontalAlignment="Left" Height="276" Margin="276,123,0,0" VerticalAlignment="Top" Width="198"/>
+        <Button Name="button_removeSelected" Content="Remove selected" HorizontalAlignment="Left" Margin="323,414,0,0" VerticalAlignment="Top" Width="103" Height="40" Click="button_removeSelected_Click"/>
+        <Button Name="button_createTeam" Content="Create Team" HorizontalAlignment="Left" Margin="206,501,0,0" VerticalAlignment="Top" Width="104" Height="40" Click="button_createTeam_Click"/>
 
     </Grid>
 </Window>
