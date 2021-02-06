@@ -133,5 +133,43 @@ namespace TrackerLibrary.DataAccess
 
             return output;
         }
+
+        public void SaveTournamentModel(TournamentModel new_moedl)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConnection.ConnectionName(nameOfConnection)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@TournamentName", new_moedl.TournamentName);
+                p.Add("@EntryFee", new_moedl.entryFee);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("spTournament_insert_data", p, commandType: CommandType.StoredProcedure);
+
+                new_moedl.ID = p.Get<int>("@id");
+
+                foreach (PrizeModel prize in new_moedl.Prizes)
+                {
+                    p = new DynamicParameters();
+
+                    p.Add("@TournamentID", new_moedl.ID);
+                    p.Add("@PrizeID", prize.Id);
+                    p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                    connection.Execute("spTournamentPrizes_insert_data", p, commandType: CommandType.StoredProcedure);
+                }
+
+                foreach (TeamModel team in new_moedl.EnteredTeams)
+                {
+                    p = new DynamicParameters();
+
+                    p.Add("@TournamentID", new_moedl.ID);
+                    p.Add("@TeamID", team.Id);
+                    p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                    connection.Execute("spTournamentEntries_insert_data", p, commandType: CommandType.StoredProcedure);
+                }
+
+            }
+        }
     }
 }

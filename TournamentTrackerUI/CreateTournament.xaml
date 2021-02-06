@@ -23,7 +23,7 @@
         <ListBox Name="listBox_prizeList" HorizontalAlignment="Left" Height="121" Margin="264,275,0,0" VerticalAlignment="Top" Width="178"/>
         <Label Content="Prizes" Margin="264,247,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="166"/>
         <Button Name="button_removeSelected_Copy" Content="Remove selected" HorizontalAlignment="Left" Margin="460,347,0,0" VerticalAlignment="Top" Width="106" Height="49" Click="button_removeSelected_Copy_Click"/>
-        <Button Name="button_createTournament" Content="Create Tournament" HorizontalAlignment="Left" Margin="197,424,0,0" VerticalAlignment="Top" Width="190" Height="46"/>
+        <Button Name="button_createTournament" Content="Create Tournament" HorizontalAlignment="Left" Margin="197,424,0,0" VerticalAlignment="Top" Width="190" Height="46" Click="button_createTournament_Click"/>
 
     </Grid>
 </Window>

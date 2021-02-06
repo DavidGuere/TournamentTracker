@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary.Models
 {
+    
     /// <summary>
     /// Represents one match in the tournament
     /// </summary>
     public class MatchModel
     {
+        public int Id { get; set; }
         /// <summary>
         /// The list of teams participaiting in this match
         /// </summary>

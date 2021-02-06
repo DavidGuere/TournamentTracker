@@ -178,5 +178,136 @@ namespace TrackerLibrary.DataAccess.TxtHelper
 
             return output;
         }
+
+        /////////////////////////////////////////////       Tournament Model        ///////////////////////////////////////
+        ///
+
+        public static List<TournamentModel> ConvertTournamentListToString(this List<string> stringLines, string fileName, string fileNameTeamModel, string fileNamePrizeModel)
+        {
+            //id, TournamentName, EntryFee, (id|id|id - Entered Teams), (id|id|id - Prizes), Rounds - id^id^id|id^id^id|id^id^id|)
+            List<TournamentModel> output = new List<TournamentModel>();
+            List<TeamModel> teams = fileName.CreateFilePath().LoadFile().ConvertStringToTeamModels(fileNameTeamModel);
+            List<PrizeModel> prizes = fileNamePrizeModel.CreateFilePath().LoadFile().ConvertStringsToPrizeModel();
+
+            foreach (string line in stringLines)
+            {
+                string[] cols = line.Split(',');
+
+                TournamentModel t = new TournamentModel();
+
+                t.ID = int.Parse(cols[0]);
+                t.TournamentName = cols[1];
+                t.entryFee = decimal.Parse(cols[2]);
+
+                string[] teamId = cols[3].Split('|');
+
+                foreach (string id in teamId)
+                {
+                    //look for the team that id's matches the on in the loop and give me the first one
+                    t.EnteredTeams.Add(teams.Where(x => x.Id == int.Parse(id)).First());
+                }
+
+                string[] prizeIds = cols[4].Split('|');
+
+                foreach (string id in prizeIds)
+                {
+                    t.Prizes.Add(prizes.Where(x => x.Id == int.Parse(id)).First());
+                }
+
+                // ROUNDS
+
+                output.Add(t);
+            }
+
+            return output;
+        }
+
+        public static void SaveTournamentModelToTxt(this List<TournamentModel> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (TournamentModel tm in models)
+            {
+                lines.Add($"{tm.ID},{tm.TournamentName},{tm.entryFee},{ConvertTeamListToString(tm.EnteredTeams)},{ConvertPrizeListToString(tm.Prizes)},{ConvertRoundListToString(tm.Rounds)}");
+            }
+
+            File.WriteAllLines(fileName.CreateFilePath(), lines);
+        }
+
+        public static string ConvertTeamListToString(List<TeamModel> teams)
+        {
+            string output = "";
+
+            if (teams.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (TeamModel t in teams)
+            {
+                output += $"{t.Id}|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
+
+        public static string ConvertPrizeListToString(List<PrizeModel> prizes)
+        {
+            string output = "";
+
+            if (prizes.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (PrizeModel t in prizes)
+            {
+                output += $"{t.Id}|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
+
+        public static string ConvertMatchupListToString(List<MatchModel> matchups)
+        {
+            string output = "";
+
+            if (matchups.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (MatchModel m in matchups)
+            {
+                output += $"{m.Id}^";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
+
+        public static string ConvertRoundListToString(List<List<MatchModel>> rounds)
+        {
+            string output = "";
+
+            if (rounds.Count == 0)
+            {
+                return "";
+            }
+
+            foreach ( List<MatchModel> r in rounds)
+            {
+                output += $"{ConvertMatchupListToString(r)}|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
     }
 }

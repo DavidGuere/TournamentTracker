@@ -101,5 +101,29 @@ namespace TournamentTrackerUI
             selectedPrizes.Remove(prizeToRemove);
             listBox_prizeList.Items.Remove(prizeToRemove);
         }
+
+        private void button_createTournament_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Validate entry fee
+            decimal fee = 0;
+            bool feeIsValid = decimal.TryParse(entry_fee.Text, out fee);
+
+            if (!feeIsValid)
+            {
+                MessageBox.Show("Enter a valid Entry fee", "Invalis fee", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            TournamentModel tmodel = new TournamentModel();
+
+            tmodel.TournamentName = Tournament_name.Text;
+            tmodel.entryFee = fee;
+            tmodel.EnteredTeams = selectedTeams;
+            tmodel.Prizes = selectedPrizes;
+
+            // Create tournamnt, create all of the prize entries, create team entries.
+            GlobalConnection.Connection.SaveTournamentModel(tmodel);
+
+        }
     }
 }
